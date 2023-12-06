@@ -1,6 +1,10 @@
 package gtils
 
-import "golang.org/x/exp/constraints"
+import (
+	"strconv"
+
+	"golang.org/x/exp/constraints"
+)
 
 func Map[T constraints.Ordered](values []T, mapfunc func(T) T) []T {
 	var ret []T
@@ -9,4 +13,13 @@ func Map[T constraints.Ordered](values []T, mapfunc func(T) T) []T {
 		ret = append(ret, nvalue)
 	}
 	return ret
+}
+
+func IsInt(s string) bool {
+	_, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	} else {
+		return true
+	}
 }
